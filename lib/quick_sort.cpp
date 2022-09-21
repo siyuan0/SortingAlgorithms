@@ -1,6 +1,6 @@
 #include "utils.hpp"
 
-void quick_sort(std::vector<int>* vec, int start, int end)
+void quick_sort(std::vector<int>& vec, int start, int end)
 {
     int pivotpt = end;
     int i = start;
@@ -10,21 +10,21 @@ void quick_sort(std::vector<int>* vec, int start, int end)
     {
         // std::cout << "before (pivot: " << pivotpt << " i: " << i << ") ";
         // printVector(*vec, start, end);
-        while((*vec)[i] > (*vec)[pivotpt] && pivotpt > start)
+        while(vec[i] > vec[pivotpt] && pivotpt > start)
         {
-            tmp = (*vec)[pivotpt-1];
-            (*vec)[pivotpt-1] = (*vec)[pivotpt];
-            (*vec)[pivotpt] = (*vec)[i];
-            (*vec)[i] = tmp;
+            tmp = vec[pivotpt-1];
+            vec[pivotpt-1] = vec[pivotpt];
+            vec[pivotpt] = vec[i];
+            vec[i] = tmp;
             pivotpt -= 1;
         }
         if(pivotpt == i)
         {
-            if((*vec)[pivotpt] > (*vec)[pivotpt+1])
+            if(vec[pivotpt] > vec[pivotpt+1])
             {
-                tmp = (*vec)[pivotpt+1];
-                (*vec)[pivotpt+1] = (*vec)[pivotpt];
-                (*vec)[pivotpt] = tmp;
+                tmp = vec[pivotpt+1];
+                vec[pivotpt+1] = vec[pivotpt];
+                vec[pivotpt] = tmp;
             }
         }
         // std::cout << "after (pivot: " << pivotpt << " i: " << i << ") ";
@@ -47,7 +47,7 @@ std::vector<int> quick_sort(std::vector<int> vec)
     START_TIMING()
     START_TRACK_SPACE("quick_sort")
 
-    quick_sort(&vec, 0, vec.size()-1);
+    quick_sort(vec, 0, vec.size()-1);
 
     END_TRACK_SPACE()
     END_TIMING()
