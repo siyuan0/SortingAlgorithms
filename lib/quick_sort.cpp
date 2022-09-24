@@ -3,33 +3,31 @@
 void quick_sort(std::vector<int>& vec, int start, int end)
 {
     int pivotpt = end;
-    int i = start;
-    int tmp;
-
-    while(i < pivotpt)
     {
-        // std::cout << "before (pivot: " << pivotpt << " i: " << i << ") ";
-        // printVector(*vec, start, end);
-        while(vec[i] > vec[pivotpt] && pivotpt > start)
+        int i = start;
+        int tmp;
+
+        while(i < pivotpt)
         {
-            tmp = vec[pivotpt-1];
-            vec[pivotpt-1] = vec[pivotpt];
-            vec[pivotpt] = vec[i];
-            vec[i] = tmp;
-            pivotpt -= 1;
-        }
-        if(pivotpt == i)
-        {
-            if(vec[pivotpt] > vec[pivotpt+1])
+            while(vec[i] > vec[pivotpt] && pivotpt > start)
             {
-                tmp = vec[pivotpt+1];
-                vec[pivotpt+1] = vec[pivotpt];
-                vec[pivotpt] = tmp;
+                tmp = vec[pivotpt-1];
+                vec[pivotpt-1] = vec[pivotpt];
+                vec[pivotpt] = vec[i];
+                vec[i] = tmp;
+                pivotpt -= 1;
             }
+            if(pivotpt == i)
+            {
+                if(vec[pivotpt] > vec[pivotpt+1])
+                {
+                    tmp = vec[pivotpt+1];
+                    vec[pivotpt+1] = vec[pivotpt];
+                    vec[pivotpt] = tmp;
+                }
+            }
+            i += 1;
         }
-        // std::cout << "after (pivot: " << pivotpt << " i: " << i << ") ";
-        // printVector(*vec, start, end);
-        i += 1;
     }
     
     if(pivotpt > start) quick_sort(vec, start, pivotpt-1);
@@ -38,8 +36,6 @@ void quick_sort(std::vector<int>& vec, int start, int end)
     TRACK_VAR(start)
     TRACK_VAR(end)
     TRACK_VAR(pivotpt)
-    TRACK_VAR(i)
-    TRACK_VAR(tmp)
 }
 
 std::vector<int> quick_sort(std::vector<int> vec)
@@ -49,6 +45,7 @@ std::vector<int> quick_sort(std::vector<int> vec)
 
     quick_sort(vec, 0, vec.size()-1);
 
+    TRACK_VECTOR(vec)
     END_TRACK_SPACE()
     END_TIMING()
     return vec;

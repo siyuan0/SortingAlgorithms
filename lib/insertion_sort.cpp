@@ -3,7 +3,7 @@
 std::vector<int> insertion_sort(std::vector<int> vec)
 {
     START_TIMING()
-    START_TRACK_SPACE("insertion_sort baseline")
+    START_TRACK_SPACE("insertion_sort <baseline>")
 
     assert(vec.size()>=2);
     std::vector<int> sorted = {vec[0]};

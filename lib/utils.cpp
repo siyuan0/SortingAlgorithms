@@ -7,8 +7,9 @@ void printVector(std::vector<int>& vec, int start, int end)
     std::cout << "}\n";
 }
 
-void printVector(std::vector<int>& vec)
+void printVector(std::vector<int>& vec, std::string extraText)
 {
+    std::cout << extraText;
     printVector(vec, 0, vec.size()-1);
 }
 

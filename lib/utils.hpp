@@ -9,7 +9,7 @@
 #include <chrono>
 #include <random>
 
-void printVector(std::vector<int>& vec);
+void printVector(std::vector<int>& vec, std::string extraText="");
 void printVector(std::vector<int>& vec, int start, int end);
 
 std::vector<int> generate_test_set(int size);
@@ -29,6 +29,6 @@ static int memused;
 
 #define END_TIMING() \
     std::chrono::duration<double> diff = std::chrono::high_resolution_clock::now() - start; \
-    std::cout << std::fixed << std::setprecision(4) <<  "\tComputational time: " << diff.count() * 1000 << "ms\n";
+    std::cout << std::fixed << std::setprecision(4) <<  "\tComputation time: " << diff.count() * 1000 << "ms\n";
 
 #endif

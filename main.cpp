@@ -14,8 +14,8 @@ int main(int argc, char* argv[])
 
     std::vector<int> otest_set = generate_test_set(TEST_SIZE);
 
+    std::cout << "performance given unsorted list---------------\n";
     auto correct_ans = insertion_sort(otest_set);
-
     for(auto sortfunc : sort_functs)
     {
         std::vector<int> test_set = otest_set;
@@ -29,6 +29,24 @@ int main(int argc, char* argv[])
             std::cout << "\tIncorrect ans\n";
             printVector(ans);
             printVector(correct_ans);
+        }
+    }
+
+    std::cout << "performance given sorted list---------------\n";
+    auto __ = insertion_sort(otest_set);
+    for(auto sortfunc : sort_functs)
+    {
+        std::vector<int> test_set = correct_ans;
+        auto ans = (*sortfunc)(test_set);
+        if(check_ans(ans, correct_ans))
+        {
+            std::cout << "\tCorrect ans obtained\n";
+        }
+        else
+        {
+            std::cout << "\tIncorrect ans\n";
+            // printVector(ans);
+            // printVector(correct_ans);
         }
     }
     

@@ -10,4 +10,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 add_executable(eval "main.cpp" 
                     "lib/utils.cpp" 
                     "lib/insertion_sort.cpp" 
-                    "lib/quick_sort.cpp")
+                    "lib/quick_sort.cpp"
+                    "lib/bubble_sort.cpp"
+                    "lib/bucket_sort.cpp"
+                    "lib/merge_sort.cpp")
